@@ -1,19 +1,18 @@
 resource "aws_directory_service_directory" "simple_ad" {
-  name     = var.name
-  password = random_string.password.result
-  size     = var.size
+  alias       = var.alias
+  description = var.description
+  enable_sso  = var.enable_sso
+  name        = var.name
+  password    = random_string.password.result
+  short_name  = var.short_name
+  size        = var.size
+  type        = var.type
+  tags        = var.tags
 
   vpc_settings {
     vpc_id     = aws_vpc.vpc.id
-    subnet_ids = [aws_subnet.public.0.id,aws_subnet.public.1.id]
+    subnet_ids = [aws_subnet.private.0.id, aws_subnet.private.1.id]
   }
-
-  alias       = var.alias
-  description = var.description
-  short_name  = var.short_name
-  enable_sso  = var.enable_sso
-  type        = var.type
-  tags        = var.tags
 }
 
 

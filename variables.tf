@@ -4,12 +4,29 @@ variable "availability_zones" {
   default     = []
 }
 
+variable "alias" {
+  description = " The alias for the directory (must be unique amongst all aliases in AWS). Required for enable_sso."
+  type        = string
+  default     = ""
+}
+
 variable "cidr_block" {
   description = "The CIDR block for VPC."
   type        = string
   default     = "192.168.0.0/16"
 }
 
+variable "description" {
+  description = "A textual description for the directory"
+  type        = string
+  default     = ""
+}
+
+variable "enable_sso" {
+  description = "Whether to enable single-sign on for the directory. Requires alias. Defaults to false."
+  type        = bool
+  default     = false
+}
 
 variable "name" {
   description = "The fully qualified name for the directory, such as corp.example.com"
@@ -21,28 +38,10 @@ variable "size" {
   type        = string
 }
 
-variable "alias" {
-  description = " The alias for the directory (must be unique amongst all aliases in AWS). Required for enable_sso."
-  type        = string
-  default     = ""
-}
-
-variable "description" {
-  description = "A textual description for the directory"
-  type        = string
-  default     = ""
-}
-
 variable "short_name" {
   description = "The short name of the directory, such as CORP"
   type        = string
   default     = ""
-}
-
-variable "enable_sso" {
-  description = "Whether to enable single-sign on for the directory. Requires alias. Defaults to false."
-  type        = bool
-  default     = false
 }
 
 variable "type" {
